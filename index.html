@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Photo Inverter</title>
+  <title>Audio Player</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -15,28 +15,22 @@
     input[type=file] {
       margin: 20px 0;
     }
-    img, canvas {
-      max-width: 100%;
-      margin: 10px 0;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    audio {
+      width: 100%;
+      margin-top: 20px;
+      outline: none;
     }
   </style>
 </head>
 <body>
-  <h2>Инвертирование фото</h2>
-  <p>Загрузите фотографию, и мы перевернём цвета 🎨</p>
+  <h2>Audio Player</h2>
+  <p>Загрузите аудиофайл, и вы сможете его воспроизвести 🎧</p>
 
-  <input type="file" accept="image/*" id="fileInput">
-
-  <div>
-    <h3>Оригинал</h3>
-    <img id="original" alt="Оригинальное фото">
-  </div>
+  <input type="file" accept="audio/*" id="audioInput">
 
   <div>
-    <h3>Инвертированное</h3>
-    <canvas id="canvas"></canvas>
+    <h3>Воспроизведение</h3>
+    <audio id="audioPlayer" controls></audio>
   </div>
 
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -44,42 +38,17 @@
     const tg = window.Telegram.WebApp;
     tg.expand(); // на весь экран
 
-    const fileInput = document.getElementById("fileInput");
-    const originalImg = document.getElementById("original");
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
+    const audioInput = document.getElementById("audioInput");
+    const audioPlayer = document.getElementById("audioPlayer");
 
-    fileInput.addEventListener("change", () => {
-      const file = fileInput.files[0];
+    audioInput.addEventListener("change", () => {
+      const file = audioInput.files[0];
       if (!file) return;
 
       const reader = new FileReader();
       reader.onload = e => {
-        originalImg.src = e.target.result;
-
-        originalImg.onload = () => {
-          // подгоняем canvas под размер изображения
-          canvas.width = originalImg.width;
-          canvas.height = originalImg.height;
-
-          // рисуем фото
-          ctx.drawImage(originalImg, 0, 0);
-
-          // получаем пиксели
-          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-          const data = imageData.data;
-
-          // инвертируем
-          for (let i = 0; i < data.length; i += 4) {
-            data[i]     = 255 - data[i];     // R
-            data[i + 1] = 255 - data[i + 1]; // G
-            data[i + 2] = 255 - data[i + 2]; // B
-            // data[i + 3] = A (прозрачность, оставляем)
-          }
-
-          // отрисовываем обратно
-          ctx.putImageData(imageData, 0, 0);
-        };
+        audioPlayer.src = e.target.result; // вставляем аудио в элемент <audio>
+        audioPlayer.play();
       };
       reader.readAsDataURL(file);
     });
