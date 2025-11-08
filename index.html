@@ -1,57 +1,36 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Audio Player</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: sans-serif;
-      background: var(--tg-theme-bg-color, #fff);
-      color: var(--tg-theme-text-color, #000);
-      text-align: center;
-      padding: 20px;
-    }
-    input[type=file] {
-      margin: 20px 0;
-    }
-    audio {
-      width: 100%;
-      margin-top: 20px;
-      outline: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Tag Reader</title>
+    <meta name="telegram-web-app-capable" content="yes">
+    <meta name="telegram-web-app-status-bar-style" content="black">
+    <meta name="telegram-web-app-orientation" content="portrait">
+    
+    <!-- Telegram WebApp SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/telegram.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
 </head>
 <body>
-  <h2>Audio Player</h2>
-  <p>Загрузите аудиофайл, и вы сможете его воспроизвести 🎧</p>
+    <div id="app">
+        <div class="loading">Загрузка...</div>
+    </div>
 
-  <input type="file" accept="audio/*" id="audioInput">
-
-  <div>
-    <h3>Воспроизведение</h3>
-    <audio id="audioPlayer" controls></audio>
-  </div>
-
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script>
-    const tg = window.Telegram.WebApp;
-    tg.expand(); // на весь экран
-
-    const audioInput = document.getElementById("audioInput");
-    const audioPlayer = document.getElementById("audioPlayer");
-
-    audioInput.addEventListener("change", () => {
-      const file = audioInput.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = e => {
-        audioPlayer.src = e.target.result; // вставляем аудио в элемент <audio>
-        audioPlayer.play();
-      };
-      reader.readAsDataURL(file);
-    });
-  </script>
+    <!-- JavaScript -->
+    <script src="scripts/id3-parser.js"></script>
+    <script src="utils/file-handler.js"></script>
+    <script src="utils/helpers.js"></script>
+    <script src="components/player-ui.js"></script>
+    <script src="components/metadata-view.js"></script>
+    <script src="components/file-selector.js"></script>
+    <script src="scripts/telegram-integration.js"></script>
+    <script src="scripts/app.js"></script>
 </body>
 </html>

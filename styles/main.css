@@ -1,0 +1,128 @@
+:root {
+    --primary-color: #2481cc;
+    --secondary-color: #ebf5ff;
+    --text-primary: #000000;
+    --text-secondary: #707579;
+    --bg-color: #ffffff;
+    --card-bg: #f8f9fa;
+    --border-radius: 12px;
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.app-container {
+    max-width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Стили компонентов */
+.player-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.track-info {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.track-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.track-artist {
+    font-size: 1.1em;
+    color: var(--text-secondary);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.metadata-section {
+    margin-top: 24px;
+}
+
+.metadata-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.metadata-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.metadata-label {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.metadata-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: var(--text-secondary);
+}
+
+.error-message {
+    background: #fee;
+    color: #c33;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 16px 0;
+    border-left: 4px solid #c33;
+}
