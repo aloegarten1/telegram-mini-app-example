@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.upload-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.upload-option {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.upload-option:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.upload-option .icon {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.url-input-container {
+    margin-top: 20px;
+}
+
+.url-input-container input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.url-input-container button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.audio-info {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.waveform-container {
+    position: relative;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+#waveform {
+    width: 100%;
+    height: 100%;
+}
+
+.trim-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.trim-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #4CAF50;
+    cursor: col-resize;
+    border-radius: 2px;
+}
+
+.left-handle {
+    left: 0;
+}
+
+.right-handle {
+    right: 0;
+}
+
+.trim-selection {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: rgba(76, 175, 80, 0.3);
+    border: 1px solid #4CAF50;
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.controls button:hover {
+    background: #45a049;
+}
+
+.controls button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.status-message {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.status-message.success {
+    background: rgba(76, 175, 80, 0.3);
+    border: 1px solid #4CAF50;
+}
+
+.status-message.error {
+    background: rgba(244, 67, 54, 0.3);
+    border: 1px solid #f44336;
+}
+
+.status-message.info {
+    background: rgba(33, 150, 243, 0.3);
+    border: 1px solid #2196F3;
+}

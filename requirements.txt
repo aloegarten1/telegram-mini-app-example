@@ -1,0 +1,7 @@
+aiogram
+python-telegram-bot
+pydub
+yt-dlp
+requests
+ffmpeg-python
+aiohttp

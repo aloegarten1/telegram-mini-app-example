@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Cutter</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Экран загрузки -->
+        <div id="uploadScreen" class="screen active">
+            <h1>🎵 Audio Cutter</h1>
+            <div class="upload-options">
+                <div class="upload-option" onclick="showFileInput()">
+                    <div class="icon">📁</div>
+                    <h3>Загрузить файл</h3>
+                    <p>MP3, WAV, OGG, FLAC</p>
+                    <input type="file" id="fileInput" accept=".mp3,.wav,.ogg,.flac" style="display: none;">
+                </div>
+                
+                <div class="upload-option" onclick="showUrlInput()">
+                    <div class="icon">🔗</div>
+                    <h3>Ссылка</h3>
+                    <p>YouTube, SoundCloud</p>
+                </div>
+            </div>
+            
+            <div id="urlInputContainer" class="url-input-container" style="display: none;">
+                <input type="text" id="urlInput" placeholder="Введите ссылку на YouTube или SoundCloud">
+                <button onclick="handleUrlSubmit()">Загрузить</button>
+            </div>
+            
+            <div id="statusMessage" class="status-message"></div>
+        </div>
+
+        <!-- Экран редактирования -->
+        <div id="editScreen" class="screen">
+            <h2>Обрезка аудио</h2>
+            
+            <div class="audio-info">
+                <div id="fileName">Файл: audio.mp3</div>
+                <div id="fileDuration">Длительность: 00:00</div>
+            </div>
+            
+            <div class="waveform-container">
+                <canvas id="waveform"></canvas>
+                <div class="trim-controls">
+                    <div class="trim-handle left-handle" id="leftHandle"></div>
+                    <div class="trim-handle right-handle" id="rightHandle"></div>
+                    <div class="trim-selection" id="trimSelection"></div>
+                </div>
+            </div>
+            
+            <div class="time-display">
+                <span id="startTime">00:00</span>
+                <span id="endTime">00:00</span>
+            </div>
+            
+            <div class="controls">
+                <button id="playButton" onclick="togglePlay()">▶️ Воспроизвести</button>
+                <button id="trimButton" onclick="trimAudio()">✂️ Обрезать</button>
+            </div>
+            
+            <div id="trimStatus" class="status-message"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
