@@ -38,7 +38,7 @@ async def handle_url(message: types.Message, bot: Bot, user_files: dict):
                 inline_keyboard=[[
                     InlineKeyboardButton(
                         text="Обрезать аудио",
-                        web_app=types.WebAppInfo(url=f"https://your-domain.com/mini-app?user_id={user_id}")
+                        web_app=types.WebAppInfo(url=f"https://aloegarten1.github.io/telegram-mini-app-example/?user_id={user_id}")
                     )
                 ]]
             )

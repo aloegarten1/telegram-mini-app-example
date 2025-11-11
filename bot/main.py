@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 # Конфигурация
 BOT_TOKEN = os.getenv('ELEVAGA_AUDIO_TOKEN')
-WEB_APP_URL = "https://your-domain.com/mini-app"  # URL вашего Mini App
+WEB_APP_URL = "https://aloegarten1.github.io/telegram-mini-app-example/"  # URL вашего Mini App
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
